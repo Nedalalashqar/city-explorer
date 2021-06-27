@@ -1,3 +1,35 @@
+https://60d86cfa714485c8e2da1415--festive-aryabhata-215cbc.netlify.app/
+
+# City Explorer
+
+**Author**: Nedal Alashqar
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## Overview
+<!-- In order to provide longitude and latitude -->
+
+## Getting Started
+<!-- The user puts the name of the city and then presses Explore! -->
+
+## Architecture
+<!-- React js and bootstrap (Form ,Button , Image ,axios)-->
+
+## Change Log
+<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+## Credit and Collaborations
+<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
