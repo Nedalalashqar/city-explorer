@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Alert from 'react-bootstrap/Alert'
 
-export class Alertmsg extends Component {
+export class MasErorr  extends Component {
     render() {
         return (
             <div>
@@ -15,4 +15,4 @@ export class Alertmsg extends Component {
     }
 }
 
-export default Alertmsg
+export default MasErorr 

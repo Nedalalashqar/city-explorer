@@ -3,7 +3,7 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
-import Alertmsg from './Alertmsg';
+import Alertmsg from './MasErorr ';
 
 export class Forms extends Component {
 
@@ -11,28 +11,28 @@ export class Forms extends Component {
     super(props);
     this.state = {
       cityName: "",
-      cityData: {},
+      data: {},
       display: false,
       error: "",
-      alert: false
+      alert: false,
+      weatherData: []
+
     }
   }
 
-  updateCity = (e) => {
-    console.log(e.target.value);
+  nameHandler = (e) => {
     this.setState({
       cityName: e.target.value,
     });
-    console.log(this.state);
   }
 
-  getData = async (e) => {
+  submitData = async (e) => {
     e.preventDefault();
     try {
-      const axiosData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.88bdc34a015f169659efd4fa8583736c&q=${this.state.cityName}&format=json`)
-      console.log(axiosData);
+      const axiosResponse = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.88bdc34a015f169659efd4fa8583736c&q=${this.state.cityName}&format=json`)
+      const axiosRes = await axios.get(`${process.env.REACT_APP_URL}/weather`);
       this.setState({
-        cityData: axiosData.data[0],
+        data: axiosResponse.data[0],
         display: true,
         alert:false
       })
@@ -40,24 +40,22 @@ export class Forms extends Component {
       this.setState({
         errot: error.message,
         alert: true,
-        display:false
+        display:false,
+        weatherData: axiosRes.data
       })
     }
   }
-
-
   render() {
     return (
       <div>
-
-        <Alertmsg
+        <MasErorr 
           alert={this.state.alert}
         />
 
-        <Form onSubmit={this.getData}>
+        <Form onSubmit={this.submitData}>
           <Form.Group className="mb-3" controlId="formBasicEmail" 	 >
             <Form.Label>City Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter City Name" onChange={this.updateCity} size={'sm'} />
+            <Form.Control type="text" placeholder="Enter City Name" onChange={this.nameHandler} size={'sm'} />
           </Form.Group>
           <Button variant="primary" type="submit" >
             Explore!
@@ -66,11 +64,11 @@ export class Forms extends Component {
         {this.state.display &&
           <div>
             <p>
-              {this.state.cityData.display_name}
+              {this.state.data.display_name}
             </p>
-            <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.88bdc34a015f169659efd4fa8583736c&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10`} rounded/>
+            <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.88bdc34a015f169659efd4fa8583736c&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} rounded/>
             <p>
-              {`latitude: ${this.state.cityData.lat}, longitude: ${this.state.cityData.lon}`}
+              {`lat: ${this.state.data.lat}, lon: ${this.state.data.lon}`}
             </p>
           </div>
         }
