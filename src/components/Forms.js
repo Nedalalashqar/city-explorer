@@ -6,26 +6,22 @@ import Image from 'react-bootstrap/Image'
 import Alertmsg from './MasErorr ';
 
 export class Forms extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      cityName: "",
+      cityName: '',
       data: {},
       display: false,
-      error: "",
+      error: '',
       alert: false,
       weatherData: []
-
     }
   }
-
   nameHandler = (e) => {
     this.setState({
       cityName: e.target.value,
     });
   }
-
   submitData = async (e) => {
     e.preventDefault();
     try {
@@ -55,7 +51,7 @@ export class Forms extends Component {
         <Form onSubmit={this.submitData}>
           <Form.Group className="mb-3" controlId="formBasicEmail" 	 >
             <Form.Label>City Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter City Name" onChange={this.nameHandler} size={'sm'} />
+            <Form.Control type="text" placeholder="Enter City Name" onChange={this.nameHandler} />
           </Form.Group>
           <Button variant="primary" type="submit" >
             Explore!
@@ -76,5 +72,4 @@ export class Forms extends Component {
     )
   }
 }
-
 export default Forms;
