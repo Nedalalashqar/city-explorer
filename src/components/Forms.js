@@ -39,7 +39,8 @@ export class Forms extends Component {
     } catch (error) {
       this.setState({
         errot: error.message,
-        alert: true
+        alert: true,
+        display:false
       })
     }
   }
